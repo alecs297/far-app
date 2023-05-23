@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="cygold">#F5C542</color>
     <color name="cylime">#96F550</color>
     <color name="cydarklime">#3D8708</color>
     <color name="cydarkestlime">#004b23</color>

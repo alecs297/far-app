@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -35,31 +36,44 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="fill_parent"
+            android:layout_marginHorizontal="30dp"
             android:gravity="center"
             android:orientation="vertical">
 
             <Button
-                android:layout_width="wrap_content"
+                android:id="@+id/button_favorites"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="24sp"
+                android:backgroundTint="@color/cygold"
+                android:textColor="@color/black"
                 android:text="@string/nav_favorites" />
 
             <Button
-                android:layout_width="wrap_content"
+                android:id="@+id/button_find"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="24sp"
+                android:backgroundTint="@color/cylime"
+                android:textColor="@color/black"
                 android:text="@string/nav_find" />
 
             <Button
-                android:layout_width="wrap_content"
+                android:id="@+id/button_list"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="24sp"
+                android:backgroundTint="@color/white"
+                android:textColor="@color/black"
                 android:text="@string/nav_list" />
 
             <Button
-                android:layout_width="wrap_content"
+                android:id="@+id/button_about"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="24sp"
+                android:backgroundTint="@color/white"
+                android:textColor="@color/black"
                 android:text="@string/nav_about" />
         </LinearLayout>
     </LinearLayout>
