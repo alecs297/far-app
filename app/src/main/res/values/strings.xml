@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">F.A.R Wrapper</string>
+    <string name="app_url">https://find-a-room.palmes.dev/</string>
+    <string name="app_description">A simple android wrapper around the Find A Room API. \nSupports version 1 of the application</string>
+    <string name="nav_find">Find A Room</string>
+    <string name="nav_list">Rooms list</string>
+    <string name="nav_favorites">Favorites</string>
+    <string name="nav_about">About</string>
+</resources>

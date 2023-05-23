@@ -1,0 +1,13 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="Base.Theme.FARApp" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <item name="colorPrimary">@color/cygoo</item>
+        <item name="colorSecondary">@color/cydarklime</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textColorLink">@color/cylime</item>
+        <item name="android:colorBackground">@color/cygoo</item>
+    </style>
+
+    <style name="Theme.FARApp" parent="Base.Theme.FARApp" />
+</resources>
