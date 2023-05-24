@@ -17,5 +17,10 @@ public class MainActivity extends AppCompatActivity {
         aboutButton.setOnClickListener(v -> {
             startActivity(new Intent(MainActivity.this, AboutActivity.class));
         });
+
+        Button findButton = findViewById(R.id.button_find);
+        findButton.setOnClickListener(v -> {
+            startActivity(new Intent(MainActivity.this, FindActivity.class));
+        });
     }
 }

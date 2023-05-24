@@ -22,7 +22,7 @@ public class AboutActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         WebView myWebView = findViewById(R.id.webview);
-        myWebView.loadUrl("https://find-a-room.palmes.dev/");
+        myWebView.loadUrl("https://find-a-room.palmes.dev/docs");
     }
 
     @Override
