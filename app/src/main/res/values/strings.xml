@@ -1,9 +1,10 @@
 <resources>
-    <string name="app_name">F.A.R Wrapper</string>
+    <string name="app_name">Find a Vacant Room</string>
     <string name="app_url">https://find-a-room.palmes.dev/</string>
-    <string name="app_description">A simple android wrapper around the Find A Room API. \nSupports version 1 of the application</string>
+    <string name="app_description">A simple android wrapper around the Find A Room API.\nCurrent build previews version 1.0.0 of the web front-end, by adding support for advanced search.\n\nDeveloped and maintained by Alex Moldovan</string>
     <string name="nav_find">Find A Room</string>
-    <string name="nav_list">Rooms list</string>
+    <string name="nav_list">Room list</string>
     <string name="nav_favorites">Favorites</string>
-    <string name="nav_about">Documentation</string>
+    <string name="nav_about">API Documentation</string>
+    <string name="button_refresh">Refresh</string>
 </resources>

@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:gravity="center_horizontal"
     tools:context=".FindActivity">
 
     <androidx.appcompat.widget.Toolbar
@@ -14,8 +15,29 @@
         app:titleTextColor="@android:color/white"
         android:background="?attr/colorPrimary"/>
 
+    <Button
+        android:id="@+id/refreshButton"
+        android:layout_margin="25dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/white"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:textSize="24sp"
+        app:cornerRadius="5dp"
+        app:icon="@android:drawable/ic_popup_sync"
+        android:text="@string/button_refresh"/>
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragment_container_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/debug"/>
+        android:id="@+id/errorText"
+        android:gravity="center"
+        android:textColor="@color/red"
+        android:textSize="24sp"
+        android:visibility="gone"/>
 </LinearLayout>
