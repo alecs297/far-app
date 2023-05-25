@@ -70,8 +70,6 @@ public class ListActivity extends AppCompatActivity {
         findViewById(R.id.resetButton).setOnClickListener(v -> {
             buildUI(new RoomFilter());
         });
-
-        updateRooms();
     }
 
     @Override
