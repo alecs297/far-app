@@ -61,8 +61,14 @@ public class ListActivity extends AppCompatActivity {
         Spinner availabilitySpinner = findViewById(R.id.availabilityPicker);
         availabilitySpinner.setAdapter(getAvailabilitySpinnerAdapter());
 
+        buildUI(storageHelper.getRoomFilter());
+
         findViewById(R.id.searchButton).setOnClickListener(v -> {
             updateRooms();
+        });
+
+        findViewById(R.id.resetButton).setOnClickListener(v -> {
+            buildUI(new RoomFilter());
         });
 
         updateRooms();
@@ -154,13 +160,61 @@ public class ListActivity extends AppCompatActivity {
         return roomFilter;
     }
 
+
+
+    private void buildUI(RoomFilter roomFilter) {
+
+        EditText capacityPicker = (EditText) findViewById(R.id.capacityPicker);
+        Spinner deltaPicker = (Spinner) findViewById(R.id.deltaPicker);
+        Spinner availabilityPicker = (Spinner) findViewById(R.id.availabilityPicker);
+        Spinner floorPicker = (Spinner) findViewById(R.id.floorPicker);
+
+
+        if (roomFilter.getAvailable().isPresent()) {
+            int availabilityIndex = 0;
+            for (Map.Entry<String, Integer> entry : availabilities.entrySet()) {
+                if (entry.getValue().equals(roomFilter.getAvailable().get() ? 1:0)) {
+                    availabilityPicker.setSelection(availabilityIndex);
+                    break;
+                }
+                availabilityIndex++;
+            }
+        } else {
+            availabilityPicker.setSelection(0);
+        }
+
+        if (roomFilter.getFloor().isPresent()) {
+            int floorIndex = 0;
+            for (Map.Entry<String, Integer> entry : floors.entrySet()) {
+                if (entry.getValue().equals(roomFilter.getFloor().get())) {
+                    floorPicker.setSelection(floorIndex);
+                    break;
+                }
+                floorIndex++;
+            }
+        } else {
+            floorPicker.setSelection(0);
+        }
+
+        int deltaIndex = 0;
+        for (Map.Entry<String, Integer> entry : deltas.entrySet()) {
+            if (entry.getValue() >= roomFilter.getDelta()) {
+                deltaPicker.setSelection(deltaIndex);
+                break;
+            }
+            deltaIndex++;
+        }
+
+        capacityPicker.setText(String.valueOf(roomFilter.getCapacity()));
+    }
+
     public void updateRooms() { //throws JSONException {
         TextView errorText = findViewById(R.id.errorText);
         LinearLayout container = findViewById(R.id.frame_holder);
         RoomFilter roomFilter;
 
         roomFilter = buildFilter();
-
+        storageHelper.setRoomFilter(roomFilter);
 
         RequestsManager requestsManager = new RequestsManager(this);
         try {

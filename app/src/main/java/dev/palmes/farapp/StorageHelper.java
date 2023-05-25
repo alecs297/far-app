@@ -24,11 +24,7 @@ public class StorageHelper {
         SharedPreferences preferences = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
         if (!preferences.contains(PREFS_SEARCH)) {
             RoomFilter filter = new RoomFilter();
-            try {
-                setRoomFilter(filter);
-            } catch (JSONException e) {
-                throw new RuntimeException(e);
-            }
+            setRoomFilter(filter);
             return filter;
         } else {
             JSONObject json;
@@ -36,6 +32,7 @@ public class StorageHelper {
 
             try {
                 json = new JSONObject(preferences.getString(PREFS_SEARCH, ""));
+                filter.setDelta(json.has("delta") ? json.getInt("delta") : 0);
                 if (json.has("capacity")) filter.setCapacity(json.getInt("capacity"));
                 if (json.has("floor")) filter.setFloor(json.getInt("floor"));
                 if (json.has("available")) filter.setAvailable(json.getBoolean("available"));
@@ -48,11 +45,15 @@ public class StorageHelper {
 
     }
 
-    public void setRoomFilter(RoomFilter filter) throws JSONException {
-        SharedPreferences preferences = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = preferences.edit();
-        editor.putString(PREFS_SEARCH, filter.getAsJSON().toString());
-        editor.apply();
+    public void setRoomFilter(RoomFilter filter) {
+        try {
+            SharedPreferences preferences = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = preferences.edit();
+            editor.putString(PREFS_SEARCH, filter.getAsJSON().toString());
+            editor.apply();
+        } catch (JSONException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 
