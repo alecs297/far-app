@@ -41,7 +41,7 @@ public class Room implements Serializable {
         this.name = room.getString("name");
         this.code = room.getString("code");
         this.floor = room.getInt("floor");
-        this.capacity = Optional.of(room.getInt("capacity"));
+        this.capacity = room.isNull("capacity") ? Optional.empty() : Optional.of(room.getInt("capacity"));
         this.available = room.getBoolean("available");
         this.currentEvents = new ArrayList<>();
         this.nextEvent = !room.getJSONObject("nextEvent").isNull("event") ? Optional.of(new Event(room.getJSONObject("nextEvent"))) : Optional.empty();

@@ -1,33 +1,48 @@
 package dev.palmes.farapp.models;
 
-import java.util.Date;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
 
 public class RoomFilter {
-    private Optional<Integer> date;
     private Optional<Integer> floor;
     private int capacity = 0;
     private int delta = 0;
     private Optional<Boolean> available;
 
-    public RoomFilter(Optional<Integer> date, Optional<Integer> floor, int capacity, int delta, Optional<Boolean> available) {
-        this.date = date;
+    public RoomFilter(Optional<Integer> floor, int capacity, int delta, Optional<Boolean> available) {
         this.floor = floor;
         this.capacity = capacity;
         this.delta = delta;
         this.available = available;
     }
 
-    public Optional<Integer> getDate() {
-        return date;
+    public RoomFilter() {
+        this(Optional.empty(), 0, 0, Optional.of(true));
     }
 
-    public void setDate(Optional<Integer> date) {
-        this.date = date;
+    public JSONObject getAsJSON() throws JSONException {
+        JSONObject json = new JSONObject();
+        if (floor.isPresent()) json.put("floor", floor.get());
+        if (available.isPresent()) json.put("available", available.get());
+        json.put("capacity", capacity);
+        json.put("delta", delta);
+        return json;
     }
 
-    public void setDate(int date) {
-        this.date = Optional.of(date);
+    public Map<String, String> getAsMap() throws JSONException {
+        Map<String, String> map = new HashMap<>();
+        getAsJSON().keys().forEachRemaining(key -> {
+            try {
+                map.put(key, getAsJSON().getString(key));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        });
+        return map;
     }
 
     public Optional<Integer> getFloor() {

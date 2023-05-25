@@ -7,4 +7,12 @@
     <string name="nav_favorites">Favorites</string>
     <string name="nav_about">API Documentation</string>
     <string name="button_refresh">Refresh</string>
+    <string name="button_search">Search</string>
+    <string name="search_title">Search Settings</string>
+    <string name="search_reset">Reset Filters</string>
+    <string name="search_available">Only show available rooms</string>
+    <string name="search_floor">Limit to Floor</string>
+    <string name="search_capacity">Minimum capacity</string>
+    <string name="search_delta">Minimum availability</string>
+    <string name="search_no_results">No results found</string>
 </resources>
