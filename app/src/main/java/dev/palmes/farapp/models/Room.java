@@ -114,7 +114,7 @@ public class Room implements Serializable {
             if (getNextEvent().isPresent()) {
                 return calendar(getNextEvent().get().getStart());
             } else {
-                return "No events scheduled";
+                return "Forever";
             }
         } else {
             Date last = getCurrentEvents().get(0).getEnd();
@@ -128,9 +128,9 @@ public class Room implements Serializable {
     }
 
     // https://stackoverflow.com/a/46526159/13200376
-    static DateTimeFormatter HOUR_FORMAT = DateTimeFormatter.ofPattern("h:mm a", Locale.ENGLISH);
+    static DateTimeFormatter HOUR_FORMAT = DateTimeFormatter.ofPattern("Hh:mm", Locale.ENGLISH);
 
-    static DateTimeFormatter MDY_FORMAT = DateTimeFormatter.ofPattern("M/d/yyyy");
+    static DateTimeFormatter MDY_FORMAT = DateTimeFormatter.ofPattern("d/M/yyyy");
 
     private static String calendar(Date date) {
         ZonedDateTime dt = ZonedDateTime.ofInstant(date.toInstant(), TimeZone.getTimeZone("GMT+4").toZoneId());
