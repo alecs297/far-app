@@ -30,12 +30,19 @@ public class RoomFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_room, container, false);
 
+        TextView capacityView = view.findViewById(R.id.roomCapacity);
+        if (room.getCapacity().isPresent()) {
+            capacityView.setText(room.getCapacity().get() + " people");
+            capacityView.setVisibility(TextView.VISIBLE);
+        }
+
         ((TextView) view.findViewById(R.id.roomName)).setText(room.getName());
         ((TextView) view.findViewById(R.id.roomCode)).setText(room.getCode());
         ((TextView) view.findViewById(R.id.roomFloor)).setText("Floor " + room.getFloor());
         ((TextView) view.findViewById(R.id.roomAvailable)).setText(room.isAvailable() ? "Available" : "Occupied");
         ((TextView) view.findViewById(R.id.roomAvailable)).setTextColor(room.isAvailable() ? getResources().getColor(R.color.cylime, getContext().getTheme()) : getResources().getColor(R.color.red, getContext().getTheme()));
         ((TextView) view.findViewById(R.id.roomAvailableUntil)).setText(room.getUntilString());
+
 
         // Inflate the layout for this fragment
         return view;
