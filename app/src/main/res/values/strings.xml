@@ -4,11 +4,10 @@
     <string name="app_description">A simple android wrapper around the Find A Room API.\nCurrent build previews version 1.0.0 of the web front-end, by adding support for advanced search.\n\nDeveloped and maintained by Alex Moldovan</string>
     <string name="nav_find">Find A Room</string>
     <string name="nav_list">Room list</string>
-    <string name="nav_favorites">Favorites</string>
     <string name="nav_about">API Documentation</string>
     <string name="until">Until</string>
     <string name="button_refresh">Refresh</string>
-    <string name="button_search">Search</string>
+    <string name="button_search">Save &amp; Apply Filters</string>
     <string name="search_title">Search Settings</string>
     <string name="search_reset">Reset Filters</string>
     <string name="search_available">Limit to availability</string>

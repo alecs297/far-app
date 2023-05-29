@@ -7,12 +7,19 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Context;
 import android.os.Bundle;
+import android.view.View;
+import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.TextView;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import org.json.JSONException;
 
@@ -44,11 +51,8 @@ public class ListActivity extends AppCompatActivity {
         initFloors();
         initAvailabilities();
 
-        // Find the toolbar view inside the activity layout
         Toolbar toolbar = findViewById(R.id.toolbar);
 
-        // Sets the Toolbar to act as the ActionBar for this Activity window.
-        // Make sure the toolbar exists in the activity and is not null
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -61,6 +65,19 @@ public class ListActivity extends AppCompatActivity {
         Spinner availabilitySpinner = findViewById(R.id.availabilityPicker);
         availabilitySpinner.setAdapter(getAvailabilitySpinnerAdapter());
 
+        EditText capacityPicker = findViewById(R.id.capacityPicker);
+        capacityPicker.setOnEditorActionListener((v, actionId, event) -> {
+            boolean handled = false;
+            if (actionId == EditorInfo.IME_ACTION_SEND) {
+                updateRooms();
+                handled = true;
+            }
+            return handled;
+        });
+
+        ScrollView scrollView = findViewById(R.id.scrollView);
+        FloatingActionButton fabJump = findViewById(R.id.fabJump);
+
         buildUI(storageHelper.getRoomFilter());
 
         findViewById(R.id.searchButton).setOnClickListener(v -> {
@@ -69,6 +86,19 @@ public class ListActivity extends AppCompatActivity {
 
         findViewById(R.id.resetButton).setOnClickListener(v -> {
             buildUI(new RoomFilter());
+        });
+
+        fabJump.setOnClickListener(v -> {
+            scrollView.fullScroll(ScrollView.FOCUS_UP);
+            scrollView.setSmoothScrollingEnabled(true);
+        });
+
+        scrollView.setOnScrollChangeListener((v, scrollX, scrollY, oldScrollX, oldScrollY) -> {
+            if (scrollY > 0) {
+                fabJump.show();
+            } else {
+                fabJump.hide();
+            }
         });
     }
 
@@ -214,6 +244,12 @@ public class ListActivity extends AppCompatActivity {
         roomFilter = buildFilter();
         storageHelper.setRoomFilter(roomFilter);
 
+        View view = this.getCurrentFocus();
+        if (view != null) {
+            InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        }
+
         RequestsManager requestsManager = new RequestsManager(this);
         try {
             requestsManager.getMany("list", response -> {
@@ -236,7 +272,7 @@ public class ListActivity extends AppCompatActivity {
                     throw new RuntimeException(e);
                 }
             }, error -> {
-                errorText.setText("Could not find rooms.");
+                errorText.setText("Could not find any matching rooms.");
                 errorText.setVisibility(TextView.VISIBLE);
                 container.setVisibility(TextView.GONE);
             }, roomFilter.getAsMap());

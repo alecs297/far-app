@@ -128,7 +128,7 @@ public class Room implements Serializable {
     }
 
     // https://stackoverflow.com/a/46526159/13200376
-    static DateTimeFormatter HOUR_FORMAT = DateTimeFormatter.ofPattern("Hh:mm", Locale.ENGLISH);
+    static DateTimeFormatter HOUR_FORMAT = DateTimeFormatter.ofPattern("hh:mm", Locale.ENGLISH);
 
     static DateTimeFormatter MDY_FORMAT = DateTimeFormatter.ofPattern("d/M/yyyy");
 

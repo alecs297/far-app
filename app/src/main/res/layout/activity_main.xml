@@ -45,17 +45,6 @@
             android:orientation="vertical">
 
             <Button
-                android:id="@+id/button_favorites"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@color/cygold"
-                android:text="@string/nav_favorites"
-                android:textColor="@color/black"
-                android:textSize="24sp"
-                android:textFontWeight="900"
-                app:cornerRadius="5dp" />
-
-            <Button
                 android:id="@+id/button_find"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

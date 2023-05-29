@@ -14,146 +14,167 @@
         app:titleTextColor="@android:color/white"
         android:background="?attr/colorPrimary"/>
 
-    <ScrollView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
-        <LinearLayout
+        <ScrollView
+            android:id="@+id/scrollView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:orientation="vertical">
+            android:layout_height="wrap_content">
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="24sp"
-                android:textFontWeight="900"
-                android:layout_marginBottom="30dp"
-                android:text="@string/search_title"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <Spinner
-                    android:layout_width="150sp"
-                    android:layout_marginRight="15sp"
-                    android:layout_height="wrap_content"
-                    android:minHeight="50sp"
-                    android:id="@+id/availabilityPicker"/>
+                android:padding="10dp"
+                android:orientation="vertical">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/search_available"/>
+                    android:textSize="24sp"
+                    android:textFontWeight="900"
+                    android:layout_marginBottom="30dp"
+                    android:text="@string/search_title"/>
 
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <Spinner
-                    android:layout_width="150sp"
-                    android:layout_marginRight="15sp"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:minHeight="50sp"
-                    android:id="@+id/deltaPicker"/>
+                    android:orientation="horizontal">
 
-                <TextView
-                    android:layout_width="wrap_content"
+                    <Spinner
+                        android:layout_width="150sp"
+                        android:layout_marginRight="15sp"
+                        android:layout_height="wrap_content"
+                        android:minHeight="50sp"
+                        android:id="@+id/availabilityPicker"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/search_available"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/search_delta"/>
+                    android:orientation="horizontal">
 
-            </LinearLayout>
+                    <Spinner
+                        android:layout_width="150sp"
+                        android:layout_marginRight="15sp"
+                        android:layout_height="wrap_content"
+                        android:minHeight="50sp"
+                        android:id="@+id/deltaPicker"/>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/search_delta"/>
 
-                <Spinner
-                    android:layout_width="150sp"
-                    android:layout_marginRight="15sp"
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:minHeight="50sp"
-                    android:id="@+id/floorPicker"/>
+                    android:orientation="horizontal">
 
-                <TextView
-                    android:layout_width="wrap_content"
+                    <Spinner
+                        android:layout_width="150sp"
+                        android:layout_marginRight="15sp"
+                        android:layout_height="wrap_content"
+                        android:minHeight="50sp"
+                        android:id="@+id/floorPicker"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/search_floor"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/search_floor"/>
+                    android:orientation="horizontal">
 
-            </LinearLayout>
+                    <EditText
+                        android:id="@+id/capacityPicker"
+                        android:layout_width="150sp"
+                        android:layout_marginRight="15sp"
+                        android:layout_height="wrap_content"
+                        android:minHeight="50sp"
+                        android:autofillHints="0"
+                        android:textColor="@color/white"
+                        android:imeOptions="actionSend"
+                        android:inputType="number" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/search_capacity"/>
 
-                <EditText
-                    android:id="@+id/capacityPicker"
-                    android:layout_width="150sp"
-                    android:layout_marginRight="15sp"
+                </LinearLayout>
+
+                <Button
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:minHeight="50sp"
-                    android:autofillHints="0"
+                    android:backgroundTint="@color/red"
                     android:textColor="@color/white"
-                    android:inputType="number" />
+                    android:layout_marginTop="30dp"
+                    android:id="@+id/resetButton"
+                    android:textSize="18sp"
+                    app:cornerRadius="5dp"
+                    android:textFontWeight="900"
+                    android:text="@string/search_reset"/>
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/white"
+                    android:textColor="@color/black"
+                    android:id="@+id/searchButton"
+                    android:textSize="18sp"
+                    app:cornerRadius="5dp"
+                    android:textFontWeight="900"
+                    android:text="@string/button_search"/>
+
+                <LinearLayout
+                    android:id="@+id/frame_holder"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/search_capacity"/>
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginVertical="15dp"
+                    android:id="@+id/errorText"
+                    android:gravity="center"
+                    android:textColor="@color/red"
+                    android:textSize="20sp"
+                    android:visibility="gone"/>
 
             </LinearLayout>
 
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@color/red"
-                android:textColor="@color/white"
-                android:layout_marginTop="30dp"
-                android:id="@+id/resetButton"
-                android:textSize="18sp"
-                app:cornerRadius="5dp"
-                android:textFontWeight="900"
-                android:text="@string/search_reset"/>
 
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@color/white"
-                android:textColor="@color/black"
-                android:id="@+id/searchButton"
-                android:textSize="18sp"
-                app:cornerRadius="5dp"
-                android:textFontWeight="900"
-                android:text="@string/button_search"/>
+        </ScrollView>
 
-            <LinearLayout
-                android:id="@+id/frame_holder"
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fabJump"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginRight="15dp"
+            android:layout_marginBottom="25dp"
+            android:tint="@color/white"
+            android:backgroundTint="@color/cydarklime"
+            android:src="@android:drawable/ic_menu_search"
+            android:visibility="gone" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/errorText"
-                android:gravity="center"
-                android:textColor="@color/red"
-                android:textSize="24sp"
-                android:visibility="gone"/>
-
-        </LinearLayout>
-
-
-    </ScrollView>
-
-
+    </RelativeLayout>
 
 </LinearLayout>
