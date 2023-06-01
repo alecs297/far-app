@@ -12,8 +12,6 @@ public class StorageHelper {
 
     private Context context;
     public static final String PREFS_NAME = "dev.palmes.farapp.prefs";
-
-    public static final String PREFS_ROOMS = "dev.palmes.farapp.prefs.rooms";
     public static final String PREFS_SEARCH = "dev.palmes.farapp.prefs.search";
 
     public StorageHelper(Context context) {
