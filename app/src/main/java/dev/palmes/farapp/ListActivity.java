@@ -28,6 +28,7 @@ import java.text.ParseException;
 import java.util.Date;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.Optional;
 
 import dev.palmes.farapp.models.Room;
 import dev.palmes.farapp.models.RoomFilter;
@@ -181,6 +182,7 @@ public class ListActivity extends AppCompatActivity {
             roomFilter.setDelta(getSelectedDelta().getValue());
             if (getSelectedFloor().getValue() != -1) roomFilter.setFloor(getSelectedFloor().getValue());
             if (getSelectedAvailability().getValue() != -1) roomFilter.setAvailable(getSelectedAvailability().getValue() == 1);
+            else roomFilter.setAvailable(Optional.empty());
             roomFilter.setCapacity(Integer.parseInt(((EditText) findViewById(R.id.capacityPicker)).getText().toString()));
         } catch (NumberFormatException e) {
             roomFilter.setCapacity(0);
@@ -192,10 +194,10 @@ public class ListActivity extends AppCompatActivity {
 
     private void buildUI(RoomFilter roomFilter) {
 
-        EditText capacityPicker = (EditText) findViewById(R.id.capacityPicker);
-        Spinner deltaPicker = (Spinner) findViewById(R.id.deltaPicker);
-        Spinner availabilityPicker = (Spinner) findViewById(R.id.availabilityPicker);
-        Spinner floorPicker = (Spinner) findViewById(R.id.floorPicker);
+        EditText capacityPicker = findViewById(R.id.capacityPicker);
+        Spinner deltaPicker = findViewById(R.id.deltaPicker);
+        Spinner availabilityPicker = findViewById(R.id.availabilityPicker);
+        Spinner floorPicker = findViewById(R.id.floorPicker);
 
 
         if (roomFilter.getAvailable().isPresent()) {

@@ -20,6 +20,12 @@ public class Event {
     public Event(JSONObject event) throws JSONException, ParseException {
         SimpleDateFormat parser = new SimpleDateFormat( "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.ENGLISH);
 
+        if (event.isNull("event")) {
+            this.start = parser.parse(event.getString("start"));
+            this.end = parser.parse(event.getString("end"));
+            return;
+        }
+
         this.start = parser.parse(event.getJSONObject("event").getString("start"));
         this.end = parser.parse(event.getJSONObject("event").getString("end"));
     }
